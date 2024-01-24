@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graphs</title>
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .navbar {
+    background-color: #333;
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+    position: sticky;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .mainNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  #navbarDesign {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #navbarDesign li {
+    margin-right: 20px;
+  }
+
+  #navbarDesign a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+  }
+
+  #navbarDesign a:hover {
+    color: #66d9ff;
+  }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            margin-left: 160px;
+            
+
+        }
+
+        .wrapper1,
+        .wrapper2,
+        .wrapper3,
+        .wrapper4,
+        .wrapper5,
+        .wrapper6,
+        .wrapper7,
+        .wrapper8,
+        .wrapper9,
+        .wrapper10,
+        .wrapper11,
+        .wrapper12,
+        .wrapper13,
+        .wrapper14,
+        .wrapper15,
+        .wrapper16,
+        .wrapper17,
+        .wrapper18 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            margin: 20px;
+        }
+    </style>
+ 
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <nav class="mainNav">
+        <ul id="navbarDesign">
+          <li><a href="./">Home</a></li>
+          <li><a href="{{ url_for('view_graphs') }}">Graphs</a></li>
+          <li><a href="{{url_for('view_report')  }}">Report</a></li>
+          <li><a href="{{ url_for('view_feedback') }}">Group Info and Feedback</a></li>
+        </ul>
+      </nav>
+    </div>
+    <h1>Graphs and plots:</h1>
+    <div class="container">
+      <div class="wrapper1">
+        <img src="{{ url_for('static', filename='images/Accuracy.png') }}" alt="Model Accuracy" />
+      </div>
+      <div class="wrapper2">
+        <img src="{{ url_for('static', filename='images/Loss.png') }}" alt="Model Loss" />
+      </div>
+      <div class="wrapper2">
+        <img src="{{ url_for('static', filename='images/AccuracyBestModel.png') }}" alt="Best Model Accuracy" />
+      </div>
+      <div class="wrapper2">
+        <img src="{{ url_for('static', filename='images/LossBestModel.png') }}" alt="Best Model Loss" />
+      </div>
+    </div>
+    <br />
+  </body>
+</html>

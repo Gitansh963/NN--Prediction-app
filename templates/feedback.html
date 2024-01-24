@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Info and Feedback</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .navbar {
+        background-color: #333;
+        padding: 15px 0;
+        text-align: center;
+        color: white;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .mainNav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      #navbarDesign {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      #navbarDesign li {
+        margin-right: 20px;
+      }
+
+      #navbarDesign a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: color 0.3s ease-in-out;
+      }
+
+      #navbarDesign a:hover {
+        color: #66d9ff;
+      }
+      .feedback {
+        position: absolute;
+        bottom: 300px;
+        right: 600px;
+        width: 300px;
+        padding: 20px;
+        background-color: #f8f8f8; /* Light gray background */
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+        border: 5px solid #333; /* Dark border */
+      }
+
+      .feedback .btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .feedback .btn-yes,
+      .feedback .btn-no {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .feedback .btn-yes {
+        background-color: #007bff; /* Blue button */
+        color: #fff;
+      }
+
+      .feedback .btn-no {
+        background-color: #e6e6e6; /* Light gray button */
+        color: #333;
+      }
+
+      .feedback .btn-no:hover {
+        animation: move-away 1s forwards;
+      }
+
+      @keyframes move-away {
+        0% {
+          transform: translateX(0);
+        }
+
+        50% {
+          transform: translateX(-500px);
+        }
+
+        100% {
+          transform: translateX(-100px);
+        }
+      }
+
+      .names {
+        text-align: left;
+        margin-left: 530px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        margin-left: 700px;
+        background-color: #4caf50; /* Green button */
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #45a049; /* Darker green on hover */
+      }
+
+      .group-info {
+        border: 8px solid #333; /* Dark border */
+        margin-left: 300px;
+        margin-right: 300px;
+        background-color: #f8f8f8; /* Light gray background */
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+        color: #333; /* Dark text color */
+      }
+
+      .names {
+        background-color: #e6e6e6; /* Light gray background */
+        padding: 20px;
+        margin-right: 250px;
+        margin-bottom: 20px;
+        margin-left: 330px;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <nav class="mainNav">
+        <ul id="navbarDesign">
+          <li><a href="./">Home</a></li>
+          <li><a href="{{ url_for('view_graphs') }}">Graphs</a></li>
+          <li><a href="">Report</a></li>
+          <li>
+            <a href="{{ url_for('view_feedback') }}">Group Info and Feedback</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <h1 style="text-align: center; margin-top: 50px">Feedback Page:</h1>
+    <div class="feedback">
+      <h2 style="text-align: center">Feedback</h2>
+      <h3 style="text-align: center">How did you find our website?</h3>
+      <div class="btn-container">
+        <button class="btn-yes" onclick="show()">Awesome</button>
+        <button class="btn-no">It's Ok</button>
+      </div>
+    </div>
+    <div class="group-info">
+      <h1 style="text-align: center; margin-top: 350px">Group Information:</h1>
+      <div class="names">
+        <h2>Name: Dhrumit Patel, Student ID: 301171388</h2>
+        <h2>Name: Gitansh Mittal, Student ID: 301200517</h2>
+        <h2>Name: Divya Agrawal, Student ID: 301272899</h2>
+        <h2>Name: Alakh Patel, Student ID: 301232383</h2>
+        <h2>Name: Henil Patel, Student ID: 301278672</h2>
+        <h2>Name: Nilkanth Patel, Student ID: ________</h2>
+      </div>
+    </div>
+    <script>
+      const feedbackDiv = document.querySelector(".feedback");
+      const btnNo = document.querySelector(".btn-no");
+
+      btnNo.addEventListener("mouseenter", () => {
+        feedbackDiv.classList.add("move-away");
+      });
+
+      btnNo.addEventListener("mouseleave", () => {
+        feedbackDiv.classList.remove("move-away");
+      });
+
+      function show() {
+        alert("Thank you for your feedback!");
+      }
+    </script>
+  </body>
+</html>

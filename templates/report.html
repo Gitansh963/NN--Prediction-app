@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Analysis Report</title>
+  </head>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* Set background image */
+      background-size: cover; /* Adjust background size */
+      background-position: center; /* Center the background image */
+      background-attachment: fixed; /* Fix the background image */
+    }
+    .navbar {
+      background-color: #333;
+      padding: 15px 0;
+      text-align: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .mainNav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white; /* Add this line to ensure the logo text is white */
+    }
+
+    #navbarDesign {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    #navbarDesign li {
+      margin-right: 20px;
+    }
+
+    #navbarDesign a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s ease-in-out;
+    }
+
+    #navbarDesign a:hover {
+      color: #66d9ff;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Your existing styles for container, etc. */
+  </style>
+  <body>
+    <div class="navbar">
+      <nav class="mainNav">
+        <ul id="navbarDesign">
+          <li><a href="./">Home</a></li>
+          <li><a href="{{ url_for('view_graphs') }}">Graphs</a></li>
+          <li><a href="{{url_for('view_report')  }}">Report</a></li>
+          <li>
+            <a href="{{ url_for('view_feedback') }}">Group Info and Feedback</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container">{{ html | safe }}</div>
+  </body>
+</html>

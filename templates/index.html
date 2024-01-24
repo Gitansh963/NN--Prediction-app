@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <title>Using Neural Network to Develop Full-Stack Intelligent Apps</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* Set background image */
+        background-image: url("../static/images/formbgimage.jpg");
+        background-size: cover; /* Adjust background size */
+        background-position: center; /* Center the background image */
+        background-attachment: fixed; /* Fix the background image */
+      }
+      .navbar {
+        background-color: #333;
+        padding: 15px 0;
+        text-align: center;
+        color: white;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .mainNav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      #navbarDesign {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      #navbarDesign li {
+        margin-right: 20px;
+      }
+
+      #navbarDesign a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: color 0.3s ease-in-out;
+      }
+
+      #navbarDesign a:hover {
+        color: #66d9ff;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 100px;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: rgb(81, 73, 236);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding-bottom: 100px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: white;
+        font-weight: bold;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1.5px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <nav class="mainNav">
+        <ul id="navbarDesign">
+          <li><a href="./">Home</a></li>
+          <li><a href="{{ url_for('view_graphs') }}">Graphs</a></li>
+          <li><a href="{{url_for('view_report')  }}">Report</a></li>
+          <li>
+            <a href="{{ url_for('view_feedback') }}">Group Info and Feedback</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <br />
+
+    <h1 style="text-align: center; color: white">Input Fields:</h1>
+    <form action="/result" method="POST" id="mainForm">
+      <label for="first_term_gpa">First Time Gpa:</label>
+      <input
+        type="text"
+        id="first_term_gpa"
+        name="first_term_gpa"
+        maxlength="4"
+        required="required"
+      /><br /><br />
+
+      <label for="second_term_gpa">Second Time Gpa:</label>
+      <input
+        type="text"
+        id="second_term_gpa"
+        name="second_term_gpa"
+        maxlength="4"
+        required="required"
+      /><br /><br />
+
+      <label for="first_language">First Language:</label>
+      <select id="first_language" name="first_language" required="required">
+        <option value="First Language_1">English</option>
+        <option value="First Language_2">French</option>
+        <option value="First Language_3">other</option></select
+      ><br /><br />
+
+      <label for="funding">Funding:</label>
+      <select id="funding" name="funding" required="required">
+        <option value="Funding_1">1</option>
+        <option value="Funding_2">2</option>
+        <option value="Funding_3">3</option>
+        <option value="Funding_4">4</option>
+        <option value="Funding_5">5</option>
+        <option value="Funding_6">6</option></select
+      ><br /><br />
+
+      <label for="fastTrack">FastTrack:</label>
+      <select id="fasttTrack" name="fastTrack" required="required">
+        <option value="FastTrack_1">Yes</option>
+        <option value="FastTrack_2">No</option></select
+      ><br /><br />
+
+      <label for="coop">Coop:</label>
+      <select id="coop" name="coop" required="required">
+        <option value="Coop_1">Yes</option>
+        <option value="Coop_2">No</option></select
+      ><br /><br />
+
+      <label for="residency">Residency:</label>
+      <select id="residency" name="residency" required="required">
+        <option value="Residency_1">Yes</option>
+        <option value="Residency_2">No</option></select
+      ><br /><br />
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required="required">
+        <option value="Gender_1">Male</option>
+        <option value="Gender_2">Female</option>
+        <option value="Gender_3">Other</option></select
+      ><br /><br />
+
+      <label for="previous_education">Previous Education:</label>
+      <select
+        id="previous_education"
+        name="previous_education"
+        required="required"
+      >
+        <option value="Previous Education_1">College/University Degree</option>
+        <option value="Previous Education_2">High School Diploma</option>
+        <option value="Previous Education_3">
+          No Formal Education
+        </option></select
+      ><br /><br />
+
+      <label for="age_group">Age Group:</label>
+      <select id="age_group" name="age_group" required="required">
+        <option value="Age Group_1">Under 19</option>
+        <option value="Age Group_2">19-24</option>
+        <option value="Age Group_3">25-34</option>
+        <option value="Age Group_4">35-44</option>
+        <option value="Age Group_5">45-54</option>
+        <option value="Age Group_6">55-64</option>
+        <option value="Age Group_7">65-74</option>
+        <option value="Age Group_8">75 and above</option></select
+      ><br /><br />
+
+      <label for="high_school_average_marks">High School Average Marks:</label>
+      <input
+        type="text"
+        id="high_school_average_marks"
+        name="high_school_average_marks"
+        maxlength="4"
+        required="required"
+      /><br /><br />
+
+      <label for="math_score">Math Score:</label>
+      <input
+        type="text"
+        id="math_score"
+        name="math_score"
+        maxlength="4"
+        required="required"
+      /><br /><br />
+
+      <label for="english_grade">English Grade:</label>
+      <select id="english_grade" name="english_grade" required="required">
+        <option value="English Grade_1">A+</option>
+        <option value="English Grade_2">A</option>
+        <option value="English Grade_3">B+</option>
+        <option value="English Grade_4">B</option>
+        <option value="English Grade_5">C+</option>
+        <option value="English Grade_6">C</option>
+        <option value="English Grade_7">D</option>
+        <option value="English Grade_8">F</option></select
+      ><br /><br />
+
+      <button type="submit" id="predict">Predict</button>
+      <button type="reset" id="reset">Reset</button>
+    </form>
+    <footer>
+      <p id="footer">
+        &copy; Copright Neural Network - Intelligent Apps by Gitansh Mittal,
+        Dhrumit Patel, Alakh Patel, Divya Agrawal, Nilkanth Patel, Henil Patel
+      </p>
+    </footer>
+  </body>
+</html>
